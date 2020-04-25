@@ -1,0 +1,45 @@
+<!-- <div class="container-fluid">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="col-sm-12 col-md-4">
+            <form>
+                <div class="form-group has-success">
+                    <label class="form-control-label" for="inputSuccess1">Email</label>
+                    <input type="email" value="correct value" class="form-control is-valid" id="inputValid">
+                    <div class="valid-feedback">Success! You've done it.</div>
+                  </div>
+                  <div class="form-group has-success">
+                    <label class="form-control-label" for="inputSuccess1">Password</label>
+                    <input type="password" value="correct value" class="form-control is-valid" id="inputValid">
+                    <div class="valid-feedback">Success! You've done it.</div>
+                  </div>
+                  <button type="submit" class="btn btn-success">Login</button>
+            </form>
+        </div>
+    </div>
+</div> -->
+<div class="container-fluid bg">
+    <div class="row justify-content-center">
+        <p class="display-3 font-weight-light text-uppercase mt-5">Sign In</p>
+    </div>
+    <form (ngSubmit)="onLogInSubmit()" class=" col-md-4 offset-md-4">
+        <!-- <form (ngSubmit)="onLogInSubmit()" #testForm="ngForm" class=" col-md-4 offset-md-4"> -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control"
+            id="email" placeholder="Email" name="email">
+            <!-- required [(ngModel)]="user.email"> -->
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control"
+            id="password" placeholder="Password" name="password">
+            <!-- required [(ngModel)]="user.password"> -->
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-outline-success">Sign In</button>
+        </div>
+    </form>
+    <div class="row justify-content-center">
+        <span class="justify-content-center align-items-center">Don't have a account? <a routerLink="/signup" class="link btn text-info">Sign Up</a></span>
+    </div>
+</div>

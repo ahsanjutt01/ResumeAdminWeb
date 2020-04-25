@@ -1,0 +1,49 @@
+<div class="container-fluid bg">
+    <div class="row justify-content-center">
+      <p class="display-3 font-weight-light text-uppercase mt-5">Sign Up</p>
+    </div>
+    <form (ngSubmit)="onSignInSubmit()">
+        <!-- <form (ngSubmit)="onSignInSubmit()" #testForm="ngForm"> -->
+        <div class="form-group col-md-4 offset-md-4">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control"
+            id="firstName" placeholder="First Name" name="firstName">
+            <!-- required [(ngModel)]="user.firstName"> -->
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control"
+            id="lastName" placeholder="Last Name" name="lastName">
+            <!-- required [(ngModel)]="user.lastName"> -->
+          </div>
+        <div class="form-group">
+            <!-- <div class="form-group" [ngClass]="{'has-danger': isError}"> -->
+                <label for="email">Email</label>
+                <input type="text" class="form-control"
+                [ngClass]="{'is-invalid': isError}"
+                id="email" placeholder="Email" name="email">
+                <!-- required [(ngModel)]="user.email"> -->
+                <!-- <div *ngIf="isError" [ngClass]="{'invalid-feedback': isError}">Sorry, that email taken. Try another?</div> -->
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control"
+                id="password" placeholder="Password" name="password">
+                <!-- required [(ngModel)]="user.password"> -->
+              </div>
+              <div class="form-group">
+                <label for="password">Confirm Password</label>
+                <input type="password" class="form-control"
+                id="confirmPassword" placeholder="Confirm Password" name="confirmPassword">
+                <!-- required [(ngModel)]="user.confirmPassword"> -->
+              </div>
+          </div>
+          <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-outline-success">Sign Up</button>
+            </div>
+      </form>
+    <div class="row justify-content-center">
+        <span class="justify-content-center align-items-center">Already have a account <a routerLink="/login" class="link btn text-info">Log In</a></span>
+    </div>
+</div>
