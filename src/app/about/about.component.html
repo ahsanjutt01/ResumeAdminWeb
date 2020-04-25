@@ -2,12 +2,13 @@
     <div class="row justify-content-center">
         <div class="col-sm-12 col-md-6">
             <span class="display-2 text-center">About</span>
-            <form class="mt-6">
+            <form (ngSubmit)="onSave()" class="mt-6">
                 <div class="form-group">
                     <label for="exampleTextarea">About</label>
-                    <textarea class="form-control" id="about" name="about" rows="5" style="margin-top: 0px; margin-bottom: 0px; height: 222px;"></textarea>
+                    <textarea class="form-control" name="description" rows="5" style="margin-top: 0px; margin-bottom: 0px; height: 222px;"
+                    [(ngModel)]="about.description"></textarea>
                   </div>
-                  <button type="button" class="btn btn-success">Save</button>
+                  <button type="submit" class="btn btn-success">Save</button>
             </form>
         </div>
     </div>

@@ -8,35 +8,35 @@
           <div class="form-group">
             <label for="firstName">First Name</label>
             <input type="text" class="form-control"
-            id="firstName" placeholder="First Name" name="firstName">
-            <!-- required [(ngModel)]="user.firstName"> -->
+            id="firstName" placeholder="First Name" name="firstName"
+            required [(ngModel)]="signup.firstName">
           </div>
           <div class="form-group">
             <label for="lastName">Last Name</label>
             <input type="text" class="form-control"
-            id="lastName" placeholder="Last Name" name="lastName">
-            <!-- required [(ngModel)]="user.lastName"> -->
+            id="lastName" placeholder="Last Name" name="lastName"
+            required [(ngModel)]="signup.lastName">
           </div>
         <div class="form-group">
             <!-- <div class="form-group" [ngClass]="{'has-danger': isError}"> -->
                 <label for="email">Email</label>
                 <input type="text" class="form-control"
                 [ngClass]="{'is-invalid': isError}"
-                id="email" placeholder="Email" name="email">
-                <!-- required [(ngModel)]="user.email"> -->
+                id="email" placeholder="Email" name="email"
+                required [(ngModel)]="signup.email">
                 <!-- <div *ngIf="isError" [ngClass]="{'invalid-feedback': isError}">Sorry, that email taken. Try another?</div> -->
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" class="form-control"
-                id="password" placeholder="Password" name="password">
-                <!-- required [(ngModel)]="user.password"> -->
+                id="password" placeholder="Password" name="password"
+                required [(ngModel)]="signup.password">
               </div>
               <div class="form-group">
                 <label for="password">Confirm Password</label>
                 <input type="password" class="form-control"
-                id="confirmPassword" placeholder="Confirm Password" name="confirmPassword">
-                <!-- required [(ngModel)]="user.confirmPassword"> -->
+                id="confirmPassword" placeholder="Confirm Password" name="confirmPassword"
+                required [(ngModel)]="signup.confirmPassword">
               </div>
           </div>
           <div class="d-flex justify-content-center">
