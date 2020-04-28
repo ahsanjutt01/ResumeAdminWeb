@@ -6,88 +6,98 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-4">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" class="rounded-circle mx-auto d-block" alt="Profile Image">
+            <img src="https://resume-server-app.herokuapp.com/{{profile.imageUrl}}" class="rounded-circle mx-auto d-block"
+            style="height:50vh; width:50vh" alt="Profile Image">
         </div>
         <div class="col-md-8 justify-content-center">
-            <form>
+            <form (ngSubmit)="onSave()">
                 <div class="form-row">
                     <div class="form-group has-success">
                         <label class="form-control-label" for="inputSuccess1">First Name</label>
-                        <input type="text" value="" class="form-control is-valid" id="inputValid">
+                        <input type="text" value="" class="form-control is-valid" id="inputValid" name="firstName"
+                        [(ngModel)]="profile.firstName">
                         <div class="valid-feedback">Success! You've done it.</div>
                     </div>
                     <div class="form-group has-success pl-2">
                         <label class="form-control-label" for="inputSuccess1">Last Name</label>
-                        <input type="text" value="" class="form-control is-valid" id="inputValid">
+                        <input type="text" value="" class="form-control is-valid" id="inputValid" name="lastName"
+                        [(ngModel)]="profile.lastName">
                         <div class="valid-feedback">Success! You've done it.</div>
                     </div>
                     <div class="form-group has-success pl-2">
                         <label class="form-control-label" for="inputSuccess1">Title</label>
-                        <input type="text" value="" class="form-control is-valid" id="inputValid">
+                        <input type="text" value="" class="form-control is-valid" id="inputValid" name="title"
+                        [(ngModel)]="profile.title">
                         <div class="valid-feedback">Success! You've done it.</div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group has-success pl-2">
                         <label class="form-control-label" for="inputSuccess1">Country</label>
-                        <input type="text" value="" class="form-control is-valid" id="inputValid">
+                        <input type="text" value="" class="form-control is-valid" id="inputValid" name="country"
+                        [(ngModel)]="profile.country">
                         <div class="valid-feedback">Success! You've done it.</div>
                     </div>
                     <div class="form-group has-success pl-2">
                         <label class="form-control-label" for="inputSuccess1">City</label>
-                        <input type="text" value="" class="form-control is-valid" id="inputValid">
+                        <input type="text" value="" class="form-control is-valid" id="inputValid" name="city"
+                        [(ngModel)]="profile.city">
                         <div class="valid-feedback">Success! You've done it.</div>
                     </div>
                     <div class="form-group has-success pl-2">
                         <label class="form-control-label" for="inputSuccess1">Zip Code</label>
-                        <input type="text" value="" class="form-control is-valid" id="inputValid">
+                        <input type="text" value="" class="form-control is-valid" id="inputValid" name="zipCode"
+                        [(ngModel)]="profile.zipCode">
                         <div class="valid-feedback">Success! You've done it.</div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group has-success pl-2">
                         <label class="form-control-label" for="inputSuccess1">Adress</label>
-                        <input type="text" value="" class="form-control is-valid" id="inputValid">
+                        <input type="text" value="" class="form-control is-valid" id="inputValid" name="address"
+                        [(ngModel)]="profile.address">
                         <div class="valid-feedback">Success! You've done it.</div>
                     </div>
                     <div class="form-group has-success pl-2">
                         <label class="form-control-label" for="inputSuccess1">Phone</label>
-                        <input type="text" value="" class="form-control is-valid" id="inputValid">
+                        <input type="text" value="" class="form-control is-valid" id="inputValid" name="phone"
+                        [(ngModel)]="profile.phone">
                         <div class="valid-feedback">Success! You've done it.</div>
                     </div>
                     <div class="form-group has-success pl-2">
                         <label class="form-control-label" for="inputSuccess1">Web Site</label>
-                        <input type="text" value="" class="form-control is-valid" id="inputValid">
+                        <input type="text" value="" class="form-control is-valid" id="inputValid" name="website"
+                        [(ngModel)]="profile.website">
                         <div class="valid-feedback">Success! You've done it.</div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group has-success pl-2">
                         <label class="form-control-label" for="inputSuccess1">Date of Birth</label>
-                        <input type="text" value="" class="form-control is-valid" id="inputValid">
+                        <input type="text" value="" class="form-control is-valid" id="inputValid" name="dob"
+                        [(ngModel)]="profile.dob">
                         <div class="valid-feedback">Success! You've done it.</div>
                     </div>
                     <div class="form-group pl-2">
                         <label class="form-control-label" for="inputSuccess1">Gender</label>
-                        <select class="custom-select">
-                          <option selected="">Open this select menu</option>
-                          <option value="1">Male</option>
-                          <option value="2">Female</option>
-                          <option value="3">Other</option>
+                        <select class="custom-select" name="gender" [(ngModel)]="profile.gender">
+                          <option value="true">Male</option>
+                          <option value="false">Female</option>
                         </select>
                       </div>
                       <div class="form-group pl-2">
                         <label class="form-control-label" for="inputSuccess1">Profile Image</label>
                         <div class="input-group mb-3">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="inputGroupFile02">
+                                <input type="file" class="custom-file-input" id="inputGroupFile02" name="imageUrl"
+                                [(ngModel)]="profile.imageUrl">
                                 <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
                             </div>
                           </div>
                         </div>
                 </div>
                 <div class="text-center">
-                <button type="button" class="btn btn-lg btn-success ml-3" style="width:20%">Save</button>
+                <button type="submit" class="btn btn-lg btn-success ml-3" style="width:20%">Save</button>
                 </div>
             </form>
         </div>

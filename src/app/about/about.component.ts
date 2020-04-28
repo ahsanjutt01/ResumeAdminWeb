@@ -39,7 +39,6 @@ export class AboutComponent implements OnInit {
 
   getAbout() {
     this.commonService.getAbout().subscribe((data: any) => {
-      console.log()
       this.about = data;
     }, error => {
       debugger;

@@ -25,75 +25,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="table-active">
+                  <!-- <tr class="table-active">
                     <th scope="row">Active</th>
                     <td>Column content</td>
                     <td>Column content</td>
                     <td>Column content</td>
                     <td>Column content</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Default</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-primary">
-                    <th scope="row">Primary</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-secondary">
-                    <th scope="row">Secondary</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-success">
-                    <th scope="row">Success</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-danger">
-                    <th scope="row">Danger</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-warning">
-                    <th scope="row">Warning</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-info">
-                    <th scope="row">Info</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-light">
-                    <th scope="row">Light</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-dark">
-                    <th scope="row">Dark</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                    <td>Column content</td>
+                  </tr> -->
+                  <tr *ngFor="let item of contacts; let i = index">
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{item.subject}}</td>
+                    <td>{{item.from}}</td>
+                    <td>{{item.message}}</td>
+                    <td>{{item.createdAt | date: 'dd/MM/yyyy'}}</td>
                   </tr>
                 </tbody>
               </table>

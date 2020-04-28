@@ -7,23 +7,25 @@
     <div class="row justify-content-center">
         <div class="col-md-3"></div>
         <div class="col-md-6 justify-content-center">
-            <form>
+            <form (ngSubmit)="onSave()">
                 <div class="form-row">
                     <div class="form-group has-success">
                         <label class="form-control-label" for="inputSuccess1">Skill Name</label>
-                        <input type="text" value="" class="form-control is-valid" id="inputValid">
+                        <input type="text" value="" class="form-control is-valid" id="inputValid" name="title"
+                        [(ngModel)]="skill.title">
                         <div class="valid-feedback">Success! You've done it.</div>
                     </div>
                     <div class="form-group has-success pl-2">
                         <label class="form-control-label" for="inputSuccess1">Experties Level</label>
-                        <input type="number" value="" class="form-control is-valid" id="inputValid">
+                        <input type="number" value="" class="form-control is-valid" id="inputValid" name="expertiesLevel"
+                        [(ngModel)]="skill.expertiesLevel">
                         <div class="valid-feedback">Success! You've done it.</div>
                     </div>
                 </div>
                 <div class="text-center">
-                <button type="button" class="btn btn-success ml-3">Save</button>
-                <button type="button" class="btn btn-info ml-3">Reset</button>
-                <button type="button" class="btn btn-danger ml-3">Delete</button>
+                <button type="submit" class="btn btn-success ml-3">Save</button>
+                <button type="button" class="btn btn-info ml-3" (click)="resetSkill()">Reset</button>
+                <button type="button" class="btn btn-danger ml-3" (click)=onDelete()>Delete</button>
                 </div>
             </form>
         </div>
@@ -39,55 +41,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="table-active">
+                  <!-- <tr class="table-active">
                     <th scope="row">Active</th>
                     <td>Column content</td>
                     <td>Column content</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Default</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-primary">
-                    <th scope="row">Primary</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-secondary">
-                    <th scope="row">Secondary</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-success">
-                    <th scope="row">Success</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-danger">
-                    <th scope="row">Danger</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-warning">
-                    <th scope="row">Warning</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-info">
-                    <th scope="row">Info</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-light">
-                    <th scope="row">Light</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr class="table-dark">
-                    <th scope="row">Dark</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
+                  </tr> -->
+                  <tr *ngFor="let item of skills; let i = index" (click)="onSkillRow($event, item)">
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{item.title}}</td>
+                    <td>{{item.expertiesLevel}}</td>
                   </tr>
                 </tbody>
               </table>
