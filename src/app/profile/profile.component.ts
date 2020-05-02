@@ -12,9 +12,10 @@ import { CommonService } from '../_services/common.service';
 })
 export class ProfileComponent implements OnInit {
   profile: Profile;
+  image;
   constructor(
     private commonService: CommonService,
-  ) { 
+  ) {
     this.profile = new Profile();
   }
 
@@ -31,10 +32,32 @@ export class ProfileComponent implements OnInit {
   }
 
   onSave() {
+    debugger;
+    // this.profile.imageUrl = this.image;
     this.commonService.putProfile(this.profile).subscribe(data => {
       this.getProfile();
     }, error => {
       debugger;
     });
+  }
+
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+
+      this.image = file;
+
+      this.commonService.uploadImage(this.image).subscribe(
+        (res) => {
+          this.getProfile();
+        },
+        (err) => {
+          debugger;
+        })
+    });
+
+    reader.readAsDataURL(file);
   }
 }

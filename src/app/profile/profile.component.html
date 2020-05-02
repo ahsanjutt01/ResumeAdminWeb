@@ -89,8 +89,10 @@
                         <label class="form-control-label" for="inputSuccess1">Profile Image</label>
                         <div class="input-group mb-3">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="inputGroupFile02" name="imageUrl"
-                                [(ngModel)]="profile.imageUrl">
+                                <input #imageInput type="file" class="custom-file-input" id="inputGroupFile02" name="imageUrl"
+                                accept="image/*"
+                                (change)="processFile(imageInput)">
+                                <!-- [(ngModel)]="profile.imageUrl"> -->
                                 <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
                             </div>
                           </div>
