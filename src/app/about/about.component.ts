@@ -42,7 +42,9 @@ export class AboutComponent implements OnInit {
 
   getAbout() {
     this.commonService.getAbout().subscribe((data: any) => {
-      this.about = data;
+      if (data) {
+        this.about = data;
+      }
     }, error => {
       this.toastr.error('Unable to get about');
     });

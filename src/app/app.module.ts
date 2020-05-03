@@ -2,8 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -51,6 +54,7 @@ import { AuthGuardService } from './guards/auth-guard.service';
       maxOpened: 7
     }),
     HttpClientModule,
+    NgHttpLoaderModule.forRoot(),
     FormsModule,
     AppRoutingModule,
   ],
