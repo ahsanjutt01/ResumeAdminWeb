@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 // Models
 import { About } from '../_models/about';
@@ -15,6 +16,7 @@ export class AboutComponent implements OnInit {
   about: About;
   constructor(
     private commonService: CommonService,
+    private toastr: ToastrService
     ) {
       this.about =  new About();
     }
@@ -25,14 +27,15 @@ export class AboutComponent implements OnInit {
   onSave() {
     if (this.about.id === 0) {
       this.commonService.postAbout(this.about).subscribe(data => {
-        console.log(data);
+        this.toastr.success('Save successfully!');
       }, error => {
-        debugger;
+        this.toastr.error('Please fill the field!');
       });
     } else {
       this.commonService.putAbout(this.about).subscribe(data => {
+        this.toastr.success('Save successfully!');
       }, error => {
-        debugger;
+        this.toastr.error('Please fill the field!');
       });
     }
   }
@@ -41,7 +44,7 @@ export class AboutComponent implements OnInit {
     this.commonService.getAbout().subscribe((data: any) => {
       this.about = data;
     }, error => {
-      debugger;
+      this.toastr.error('Unable to get about');
     });
   }
 }

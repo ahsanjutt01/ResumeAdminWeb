@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 import { Work } from '../_models/work';
 
@@ -15,6 +16,7 @@ export class WorkExperienceComponent implements OnInit {
   works: Work[];
   constructor(
     private commonService: CommonService,
+    private toastr: ToastrService
   ) {
     this.resetWork();
   }
@@ -28,15 +30,17 @@ export class WorkExperienceComponent implements OnInit {
   onSave() {
     if (this.work.id === 0) {
       this.commonService.postWork(this.work).subscribe(data => {
+        this.toastr.success('Save successfully!');
         this.getWork();
       }, error => {
-        debugger;
+        this.toastr.error('Please fill all the fields!');
       });
     } else {
       this.commonService.putWork(this.work).subscribe(data => {
+        this.toastr.success('Save successfully!');
         this.getWork();
       }, error => {
-        debugger;
+        this.toastr.error('Please fill all the fields!');
       });
     }
   }
@@ -46,7 +50,7 @@ export class WorkExperienceComponent implements OnInit {
       this.resetWork();
       this.works = data;
     }, error => {
-      debugger;
+      this.toastr.error('Unable to get work!');
     });
   }
   onWorkRow(event, work: Work) {
@@ -55,9 +59,10 @@ export class WorkExperienceComponent implements OnInit {
   onDelete = () => {
     this.commonService.deleteWork(this.work.id).subscribe((data: any) => {
       this.resetWork();
+      this.toastr.success('Save successfully!');
       this.getWork();
     }, error => {
-      debugger;
+      this.toastr.error('Unable to delete work!');
     });
   }
 

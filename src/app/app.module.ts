@@ -36,9 +36,6 @@ import { AuthGuardService } from './guards/auth-guard.service';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
@@ -52,7 +49,10 @@ import { AuthGuardService } from './guards/auth-guard.service';
       progressAnimation: 'decreasing',
       easing: 'ease-in',
       maxOpened: 7
-    })
+    }),
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule,
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from '../_services/auth.service';
 
@@ -17,9 +18,10 @@ export class SignupComponent implements OnInit {
     confirmPassword: '',
     isAgreeTerms: true
   };
-
+  isError = false;
   constructor(
     private authService: AuthService,
+    private toastr: ToastrService,
     private router: Router
   ) {
   }
@@ -28,10 +30,10 @@ export class SignupComponent implements OnInit {
   }
   onSignInSubmit() {
     this.authService.signup(this.signup).subscribe(data => {
+      this.toastr.success('Signup successfully!');
       this.router.navigateByUrl('/login');
     }, error => {
-      console.log('error', error);
-      debugger;
+      this.toastr.error('Please enter valid fields!');
     });
   }
 }

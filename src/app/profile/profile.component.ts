@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 import { Profile } from '../_models/profile';
 
@@ -15,6 +16,7 @@ export class ProfileComponent implements OnInit {
   image;
   constructor(
     private commonService: CommonService,
+    private toastr: ToastrService
   ) {
     this.profile = new Profile();
   }
@@ -25,19 +27,17 @@ export class ProfileComponent implements OnInit {
   getProfile() {
     this.commonService.getProfile().subscribe((data: any) => {
       this.profile = data;
-      // this.profile.imageUrl !== null ? this.profile.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'; 
     }, error => {
-      debugger;
+      this.toastr.error('Unable to Load Profile!');
     });
   }
 
   onSave() {
-    debugger;
-    // this.profile.imageUrl = this.image;
     this.commonService.putProfile(this.profile).subscribe(data => {
+      this.toastr.success('Save successfully!');
       this.getProfile();
     }, error => {
-      debugger;
+      this.toastr.error('Unable to save profile!');
     });
   }
 
@@ -51,11 +51,12 @@ export class ProfileComponent implements OnInit {
 
       this.commonService.uploadImage(this.image).subscribe(
         (res) => {
+          this.toastr.success('Profile image saved!');
           this.getProfile();
         },
         (err) => {
-          debugger;
-        })
+          this.toastr.error('Unable to save profile image!');
+        });
     });
 
     reader.readAsDataURL(file);

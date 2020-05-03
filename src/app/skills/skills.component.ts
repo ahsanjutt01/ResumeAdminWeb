@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 import { Skill } from '../_models/skill';
 
@@ -16,6 +17,7 @@ export class SkillsComponent implements OnInit {
   skills: Skill[];
   constructor(
     private commonService: CommonService,
+    private toastr: ToastrService
   ) {
     this.resetSkill();
   }
@@ -29,15 +31,17 @@ export class SkillsComponent implements OnInit {
   onSave() {
     if (this.skill.id === 0) {
       this.commonService.postSkill(this.skill).subscribe(data => {
+        this.toastr.success('Save successfull!');
         this.getSkill();
       }, error => {
-        debugger;
+        this.toastr.error('Please fill all the fields');
       });
     } else {
       this.commonService.putSkill(this.skill).subscribe(data => {
+        this.toastr.success('Save successfull!');
         this.getSkill();
       }, error => {
-        debugger;
+        this.toastr.error('Please fill all the fields');
       });
     }
   }
@@ -47,7 +51,7 @@ export class SkillsComponent implements OnInit {
       this.resetSkill();
       this.skills = data;
     }, error => {
-      debugger;
+      this.toastr.error('Unable to get Skills');
     });
   }
   onSkillRow(event, skill: Skill) {
@@ -56,9 +60,10 @@ export class SkillsComponent implements OnInit {
   onDelete = () => {
     this.commonService.deleteSkill(this.skill.id).subscribe((data: any) => {
       this.resetSkill();
+      this.toastr.success('Delete successfull!');
       this.getSkill();
     }, error => {
-      debugger;
+      this.toastr.error('Error in Deleteing skill');
     });
   }
 
