@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider, LoginOpt } from 'angularx-social-login';
 
 
 
@@ -22,6 +23,31 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
 import { AuthGuardService } from './guards/auth-guard.service';
+
+const fbLoginOptions: LoginOpt = {
+  // scope: 'pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
+  scope: 'pages_messaging,pages_messaging_subscriptions,email,pages_show_list',
+  return_scopes: true,
+  enable_profile_selector: true
+};
+
+const googleLoginOptions: LoginOpt = {
+  scope: 'profile email'
+};
+
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('370336233139-5gij0mnmsmjf74dpnqjg73mo3ov05l8q.apps.googleusercontent.com')
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('1548104248675955', fbLoginOptions)
+  }
+]);
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -57,8 +83,15 @@ import { AuthGuardService } from './guards/auth-guard.service';
     NgHttpLoaderModule.forRoot(),
     FormsModule,
     AppRoutingModule,
+    SocialLoginModule
   ],
-  providers: [AuthGuardService],
+  providers: [
+    AuthGuardService,
+    {
+      provide: AuthServiceConfig,
+    useFactory: provideConfig,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
