@@ -10,13 +10,13 @@
             <label for="firstName">First Name</label>
             <input type="text" class="form-control"
             id="firstName" placeholder="First Name" name="firstName"
-            required [(ngModel)]="signup.firstName">
+            required disabled="true" [(ngModel)]="signup.firstName">
           </div>
           <div class="form-group">
             <label for="lastName">Last Name</label>
             <input type="text" class="form-control"
             id="lastName" placeholder="Last Name" name="lastName"
-            required [(ngModel)]="signup.lastName">
+            required disabled="true" [(ngModel)]="signup.lastName">
           </div>
         <div class="form-group">
             <!-- <div class="form-group" [ngClass]="{'has-danger': isError}"> -->
@@ -24,7 +24,7 @@
                 <input type="text" class="form-control"
                 [ngClass]="{'is-invalid': isError}"
                 id="email" placeholder="Email" name="email"
-                required [(ngModel)]="signup.email">
+                required disabled="true" [(ngModel)]="signup.email">
                 <!-- <div *ngIf="isError" [ngClass]="{'invalid-feedback': isError}">Sorry, that email taken. Try another?</div> -->
               </div>
               <div class="form-group">
@@ -41,10 +41,10 @@
               </div>
           </div>
           <div class="d-flex justify-content-center">
-              <button type="submit" class="btn btn-outline-success">Sign Up</button>
+              <button type="submit" *ngIf="signup.email.length > 0" class="btn btn-outline-success">Sign Up</button>
               <button type="button" (click)="signInWithFB()" class="btn btn-primary ml-3">Sign In With Facebook</button>
               <button type="button" (click)="signInWithGoogle()" class="btn btn-success ml-3">Sign In With Google</button>
-              <button type="button" (click)="signOut()" class="btn btn-danger ml-3">Sign Out</button>
+              <!-- <button type="button" (click)="signOut()" class="btn btn-danger ml-3">Sign Out</button> -->
             </div>
       </form>
     <div class="row justify-content-center">

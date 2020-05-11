@@ -42,7 +42,7 @@ const config = new AuthServiceConfig([
   },
   {
     id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider('1548104248675955', fbLoginOptions)
+    provider: new FacebookLoginProvider('1548104248675955')
   }
 ]);
 export function provideConfig() {
