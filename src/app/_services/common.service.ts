@@ -17,8 +17,8 @@ import { Project } from '../_models/project';
   providedIn: 'root'
 })
 export class CommonService {
-  private API_URL = 'http://localhost:4900';
-  // private API_URL = 'https://resume-server-app.herokuapp.com';
+  // private API_URL = 'http://localhost:4900';
+  private API_URL = 'https://resume-server-app.herokuapp.com';
   options: any;
   userInfo;
 
