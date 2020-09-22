@@ -23,11 +23,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   onLogInSubmit() {
+    console.log(this.model);
     this.authService.login(this.model).subscribe(data => {
       this.toastr.success('Login successfully!');
       this.router.navigateByUrl('');
     }, error => {
-      this.toastr.error('Email and Password is incorrect!');
+      this.toastr.error('Email or Password is incorrect!');
     });
   }
 }

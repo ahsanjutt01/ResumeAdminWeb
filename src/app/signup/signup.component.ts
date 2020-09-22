@@ -38,15 +38,14 @@ export class SignupComponent implements OnInit {
     });
   }
   onSignInSubmit() {
-    // this.authService.signup(this.signup).subscribe(data => {
-    //   this.toastr.success('Signup successfully!');
-    //   this.router.navigateByUrl('/login');
-    // }, error => {
-    //   this.toastr.error('Please enter valid fields!');
-    // });
+    this.authService.signup(this.signup).subscribe(data => {
+      this.toastr.success('Signup successfully!');
+      this.router.navigateByUrl('/login');
+    }, error => {
+      this.toastr.error('Please enter valid fields!');
+    });
   }
   signInWithFB(): void {
-    debugger;
     this.authSocial.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
       this.signup.firstName = x.firstName;
       this.signup.lastName = x.lastName;
@@ -54,7 +53,6 @@ export class SignupComponent implements OnInit {
      });
   }
   signInWithGoogle(): void {
-    debugger;
     this.authSocial.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
       this.signup.firstName = x.firstName;
       this.signup.lastName = x.lastName;

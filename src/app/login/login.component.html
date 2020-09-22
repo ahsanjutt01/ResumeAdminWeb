@@ -22,22 +22,28 @@
     <div class="row justify-content-center">
         <p class="display-3 font-weight-light text-uppercase mt-5">Sign In</p>
     </div>
-    <form (ngSubmit)="onLogInSubmit()" class=" col-md-4 offset-md-4">
-        <!-- <form (ngSubmit)="onLogInSubmit()" #testForm="ngForm" class=" col-md-4 offset-md-4"> -->
+    <form (ngSubmit)="onLogInSubmit()" class=" col-md-4 offset-md-4"
+    #loginForm="ngForm">
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control"
-            id="email" placeholder="Email" name="email"
-            required [(ngModel)]="model.email">
+            <input type="email"  class="form-control" [ngClass]="(eemail.invalid && (eemail.dirty && eemail.touched)) ? 'is-invalid' : '' "
+            id="email" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+            required [(ngModel)]="model.email" #eemail="ngModel">
+            <!-- pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" -->
+            <div *ngIf="eemail.errors?.required && eemail.dirty" class="invalid-feedback">Email is required!</div>
+            <div *ngIf="!eemail.errors?.required && eemail.invalid && (eemail.dirty && eemail.touched)" class="invalid-feedback">Please enter a valid email!</div>
+            <!-- <div *ngIf="!email.errors.required && email.errors.pattern && email.invalid && (email.dirty || email.touched)" class="invalid-feedback">Please enter a valid email!</div> -->
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control"
+            <input type="password" class="form-control" [ngClass]="(pwd.invalid && (pwd.dirty && pwd.touched)) ? 'is-invalid' : '' "
             id="password" placeholder="Password" name="password"
-            required [(ngModel)]="model.password">
+            required [(ngModel)]="model.password" #pwd="ngModel">
+            <div *ngIf="pwd.invalid && (pwd.dirty && pwd.touched)" class="invalid-feedback">Please enter a password!</div>
+
         </div>
         <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-outline-success">Sign In</button>
+            <button type="submit" class="btn btn-outline-success" [disabled] = "!loginForm.valid">Sign In</button>
         </div>
     </form>
     <div class="row justify-content-center">

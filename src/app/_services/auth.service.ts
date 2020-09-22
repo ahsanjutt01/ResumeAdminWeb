@@ -8,7 +8,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthService {
-  private API_URL = 'https://resume-server-app.herokuapp.com';
+  private API_URL = 'http://localhost:4900';
+  // private API_URL = 'https://resume-server-app.herokuapp.com';
 
   constructor(
     private http: HttpClient

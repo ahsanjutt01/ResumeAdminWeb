@@ -89,7 +89,7 @@ export function provideConfig() {
     AuthGuardService,
     {
       provide: AuthServiceConfig,
-    useFactory: provideConfig,
+      useFactory: provideConfig,
     }
   ],
   bootstrap: [AppComponent]

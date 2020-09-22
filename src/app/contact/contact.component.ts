@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-
+import openSocket from 'socket.io-client';
 // Services
 import { CommonService } from '../_services/common.service';
 
@@ -10,7 +10,8 @@ import { CommonService } from '../_services/common.service';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  contacts: [any];
+  private API_URL = 'http://localhost:4900';
+  contacts = [];
   constructor(
     private commonService: CommonService,
     private toastr: ToastrService
@@ -18,14 +19,21 @@ export class ContactComponent implements OnInit {
 
   ngOnInit() {
     this.getContacts();
+    const socket = openSocket(this.API_URL);
+    socket.on('messsages', data => {
+      if (data.action === 'create') {
+        this.toastr.info('New message received!');
+        this.contacts.unshift(data.message);
+      }
+    });
   }
 
   getContacts() {
     this.commonService.getMessages().subscribe((data: any) => {
       this.contacts = data;
+      this.contacts.reverse();
     }, error => {
       this.toastr.error('Unable to get get messages!');
     });
   }
-
 }
